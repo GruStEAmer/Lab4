@@ -6,7 +6,7 @@ public class Executer{
         cpu = i;
     }
 
-    void run(Program c, int i)
+    void run(Program c)
     {
         for(Command com : c) {
             cpu.exec(com);
