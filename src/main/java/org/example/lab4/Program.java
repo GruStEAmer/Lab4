@@ -1,6 +1,11 @@
 package org.example.lab4;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Program implements Iterable<Command>{
     private ArrayList<Command> commandList = new ArrayList<>();
@@ -37,6 +42,13 @@ public class Program implements Iterable<Command>{
     }
 
     public void remove(int i){
+        String key = commandList.get(i).info[0];
+        if (counter.get(key) > 1) {
+            counter.put(key, counter.get(key) - 1);
+        }
+        else{
+            counter.remove(key);
+        }
         commandList.remove(i);
         eventCall();
     }
@@ -86,6 +98,9 @@ public class Program implements Iterable<Command>{
         return a;
     }
 
+    public int size(){
+        return commandList.size();
+    }
 
     @Override
     public Iterator<Command> iterator() {

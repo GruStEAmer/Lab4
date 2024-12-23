@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="PaneCommand" maxHeight="70.0" maxWidth="450.0" minHeight="70.0" minWidth="450.0" prefHeight="70.0" prefWidth="450.0" style="-fx-border-color: BLack;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab4.CommandPaneView">
+<Pane fx:id="PaneCommand" maxHeight="70.0" maxWidth="450.0" minHeight="70.0" minWidth="450.0" prefHeight="70.0" prefWidth="450.0" style="-fx-border-color: bLack;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab4.CommandPaneView">
    <children>
       <Button fx:id="exit" layoutX="15.0" layoutY="20.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#buttonExit" prefHeight="30.0" prefWidth="30.0" text="X" />
       <Button fx:id="up" layoutX="50.0" layoutY="20.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#upper" prefHeight="30.0" prefWidth="30.0" text="&lt;" />

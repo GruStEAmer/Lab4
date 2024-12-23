@@ -21,7 +21,7 @@ public class mainController implements IObserver{
     Program prog = BProgram.build();
     ICPU cpu = BCPU.build();
     Executer exec = new Executer(cpu);
-
+    int currentCommand = 0;
     @FXML
     Pane pane;
 
@@ -75,16 +75,30 @@ public class mainController implements IObserver{
 
     @FXML
     void addCommand(){
-        if(!inputText.getText().equals("")){
+        if(!inputText.getText().isEmpty()){
             prog.add(new Command(inputText.getText()));
         }
+    }
+
+    @FXML
+    void NextCommand(){
+        if(currentCommand + 1 < prog.size()){
+            currentCommand++;
+            prog.eventCall();
+        }
+    }
+
+    @FXML
+    void refresh(){
+        currentCommand = 0;
+        prog.eventCall();
     }
 
     @Override
     public void event(Program prog){
         //Executer run
         cpu.clear();
-        exec.run(prog);
+        exec.run(prog,currentCommand);
         //
         //RAM print
         int[] ram = cpu.getRAM();
@@ -98,8 +112,6 @@ public class mainController implements IObserver{
                 if(ram[j*5 + i  + 1] != 0){
                     a.setStyle("-fx-text-fill: red;");
                 }
-                else
-                    a.setStyle("-fx-text-fill: black;");
                 MemGridPane.add(a,i,j);
             }
         }
@@ -115,7 +127,6 @@ public class mainController implements IObserver{
         mainGrid.getChildren().clear();
 
         int counter = 0;
-
         for(Command i : prog){
             FXMLLoader fxmlLoader = new FXMLLoader(
                     main.class.getResource("CommandPane-view.fxml")
@@ -135,11 +146,13 @@ public class mainController implements IObserver{
                 }
                 Label d = (Label)p.lookup("#index");
                 d.setText(String.valueOf(counter));
-
+                if(counter == currentCommand){
+                    p.setStyle("-fx-background-color: red;");
+                }
                 mainGrid.addColumn(0, p);
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }
+                }
             counter++;
         }
         //

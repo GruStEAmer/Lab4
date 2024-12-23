@@ -60,6 +60,7 @@ public class CPU implements ICPU {
         R.clear();
         for(int i = 0; i < 51;i++) RAM[i] = 0;
     }
+
     public void init(Command c) {
         RAM[Integer.parseInt(c.info[1])] = Integer.parseInt(c.info[2]);
     }
