@@ -19,9 +19,11 @@ import java.util.Map;
 
 public class mainController implements IObserver{
     Program prog = BProgram.build();
+    Program stat = new Program();
     ICPU cpu = BCPU.build();
     Executer exec = new Executer(cpu);
     int currentCommand = 0;
+
     @FXML
     Pane pane;
 
@@ -82,15 +84,16 @@ public class mainController implements IObserver{
 
     @FXML
     void NextCommand(){
-        if(currentCommand + 1 < prog.size()){
-            currentCommand++;
-            prog.eventCall();
-        }
+        stat.add(prog.get(currentCommand));
+        currentCommand++;
+        prog.eventCall();
+
     }
 
     @FXML
     void refresh(){
         currentCommand = 0;
+        stat.clear();
         prog.eventCall();
     }
 
@@ -98,7 +101,7 @@ public class mainController implements IObserver{
     public void event(Program prog){
         //Executer run
         cpu.clear();
-        exec.run(prog,currentCommand);
+        exec.run(stat);
         //
         //RAM print
         int[] ram = cpu.getRAM();
@@ -157,7 +160,8 @@ public class mainController implements IObserver{
         }
         //
         //Вывод частоту комманд
-       frequencyPane.getChildren().clear();
+        frequencyPane.getChildren().clear();
+        //Можно вместо prog сделать stat и тогда будет выводить лишь выполненные команды , а не все
         for(Map.Entry<String, Integer> i : prog.frequencyCommands().reversed()){
             Label a = new Label();
             a.setPrefWidth(200);

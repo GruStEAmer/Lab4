@@ -41,6 +41,13 @@ public class Program implements Iterable<Command>{
         eventCall();
     }
 
+    public Command get(int i){
+        return commandList.get(i);
+    }
+
+    public void clear(){
+        commandList.clear();
+    }
     public void remove(int i){
         String key = commandList.get(i).info[0];
         if (counter.get(key) > 1) {

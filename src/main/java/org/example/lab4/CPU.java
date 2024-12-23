@@ -1,11 +1,11 @@
 package org.example.lab4;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 public class CPU implements ICPU {
     private final int[] RAM = new int[51];
     private HashMap<String, Integer> R = new HashMap<>();
+    private HashMap<String, Integer> counter = new HashMap<>();
 
     CPU(){
         R.put("a",0);
@@ -17,6 +17,13 @@ public class CPU implements ICPU {
     @Override
     public void exec(Command c)
     {
+        String key = c.info[0];
+        if (counter.containsKey(key)) {
+            counter.put(key, counter.get(key) + 1);
+        }
+        else {
+            counter.put(key, 1);
+        }
         switch(c.info[0]){
             case "init":
                 init(c);
@@ -60,7 +67,6 @@ public class CPU implements ICPU {
         R.clear();
         for(int i = 0; i < 51;i++) RAM[i] = 0;
     }
-
     public void init(Command c) {
         RAM[Integer.parseInt(c.info[1])] = Integer.parseInt(c.info[2]);
     }

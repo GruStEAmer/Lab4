@@ -1,5 +1,6 @@
 package org.example.lab4;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface ICPU {

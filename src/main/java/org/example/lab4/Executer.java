@@ -6,13 +6,10 @@ public class Executer{
         cpu = i;
     }
 
-    void run(Program c,int i)
+    void run(Program c)
     {
-        int counter = 0;
         for(Command com : c) {
-            if(counter > i) break;
             cpu.exec(com);
-            counter++;
         }
     }
 }
