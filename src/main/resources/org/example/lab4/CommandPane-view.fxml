@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="PaneCommand" maxHeight="70.0" maxWidth="450.0" minHeight="70.0" minWidth="450.0" prefHeight="70.0" prefWidth="450.0" style="-fx-border-color: BLack;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab4.CommandPaneView">
+   <children>
+      <Button fx:id="exit" layoutX="15.0" layoutY="20.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#buttonExit" prefHeight="30.0" prefWidth="30.0" text="X" />
+      <Button fx:id="up" layoutX="50.0" layoutY="20.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#upper" prefHeight="30.0" prefWidth="30.0" text="&lt;" />
+      <Button fx:id="down" layoutX="85.0" layoutY="20.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#downer" prefHeight="30.0" prefWidth="30.0" text="&gt;" />
+      <Label fx:id="com" layoutX="165.0" layoutY="26.0" maxHeight="20.0" maxWidth="50.0" minHeight="20.0" minWidth="50.0" prefHeight="20.0" prefWidth="50.0" />
+      <Label layoutX="251.0" layoutY="26.0" prefHeight="20.0" prefWidth="50.0" fx:id="x" />
+      <Label fx:id="y" layoutX="344.0" layoutY="26.0" prefHeight="20.0" prefWidth="50.0" />
+      <Label fx:id="index" layoutX="408.0" layoutY="26.0" style="visibility: false;" />
+   </children>
+</Pane>
